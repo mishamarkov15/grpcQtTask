@@ -30,7 +30,13 @@ void ServerMainWindow::initWidget() {
 
     startButton->setText("Start server");
 
-    udpSocket->bind(QHostAddress::LocalHost, port);
+//    if (!udpSocket->bind(QHostAddress::LocalHost, port, QAbstractSocket::ShareAddress | QAbstractSocket::ReuseAddressHint)) {
+//        qCritical() << "Cannot bind to " << udpSocket->localAddress() << udpSocket->localPort();
+//        qCritical() << udpSocket->errorString();
+//        exit(EXIT_FAILURE);
+//    } else {
+//        qDebug() << "Server started successfully at port" << port;
+//    }
 }
 
 void ServerMainWindow::initLayout() {
@@ -55,7 +61,8 @@ void ServerMainWindow::broadcastMessage() {
     if (ok) {
         messagesLogArea->append("Starting server at localhost:" + QString::number(grpcPort));
         QByteArray dgram = ("localhost:" + QString::number(grpcPort)).toLocal8Bit();
-        udpSocket->writeDatagram(dgram.data(), dgram.size(), QHostAddress::Broadcast, port);
+        quint64 sendBytes = udpSocket->writeDatagram(dgram, QHostAddress::Broadcast, port);
+        qDebug() << "Datagram for" << QHostAddress::Broadcast << port << "was written [" << sendBytes<< "bytes ]" ;
     } else {
         messagesLogArea->append("Error starting server");
     }

@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <cstdint>
+#include <iostream>
 
 #include <QMainWindow>
 #include <QWidget>
@@ -19,6 +20,7 @@
 
 
 class ServerMainWindow : public QMainWindow {
+Q_OBJECT
 public:
     explicit ServerMainWindow(uint16_t port = 10001, QWidget* parent = nullptr);
 

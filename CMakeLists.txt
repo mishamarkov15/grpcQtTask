@@ -18,8 +18,19 @@ find_package(Qt6 COMPONENTS
 set(SOURCES_SERVER main.cpp src/server/ServerMainWindow.cpp)
 set(HEADERS_SERVER include/server/ServerMainWindow.h)
 
-add_executable(gRPCTestTask ${SOURCES_SERVER} ${HEADERS_SERVER})
-target_link_libraries(gRPCTestTask
+set(SOURCES_CLIENT client.cpp src/client/ClientMainWindow.cpp)
+set(HEADERS_CLIENT include/client/ClientMainWindow.h)
+
+add_executable(gRPCTestTaskServer ${SOURCES_SERVER} ${HEADERS_SERVER})
+target_link_libraries(gRPCTestTaskServer
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets
+        Qt::Network
+        )
+
+add_executable(gRPCTestTaskClient ${SOURCES_CLIENT} ${HEADERS_CLIENT})
+target_link_libraries(gRPCTestTaskClient
         Qt::Core
         Qt::Gui
         Qt::Widgets

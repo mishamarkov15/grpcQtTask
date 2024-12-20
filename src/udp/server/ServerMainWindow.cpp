@@ -1,4 +1,4 @@
-#include "../../include/server/ServerMainWindow.h"
+#include "../../../include/udp/server/ServerMainWindow.h"
 
 ServerMainWindow::ServerMainWindow(uint16_t port, QWidget *parent)
         : QMainWindow(parent),

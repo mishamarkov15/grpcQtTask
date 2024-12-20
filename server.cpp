@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "include/server/ServerMainWindow.h"
+#include "include/udp/server/ServerMainWindow.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);

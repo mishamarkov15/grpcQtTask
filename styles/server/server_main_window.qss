@@ -1,0 +1,8 @@
+QTextEdit {
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+}
